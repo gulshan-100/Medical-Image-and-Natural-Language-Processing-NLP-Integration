@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Brain Tumor Classification</h1>
+        
+        <div class="upload-container">
+            <div class="upload-box" id="dropZone">
+                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png" hidden>
+                <div class="upload-content">
+                    <img src="{{ url_for('static', filename='images/upload-icon.png') }}" alt="Upload" id="previewImage">
+                    <p>Drag and drop an MRI image or click to upload</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <h2>Results</h2>
+            <div class="result-content">
+                <p>Prediction: <span id="prediction"></span></p>
+                <p>Confidence: <span id="confidence"></span>%</p>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>Medical Report Generation</h2>
+            <div class="text-input-container">
+                <textarea id="medicalText" placeholder="Enter medical notes or patient history here..." rows="6"></textarea>
+                <button id="generateReport" class="generate-btn">Generate Report</button>
+            </div>
+            
+            <div class="report-container" id="reportContainer" style="display: none;">
+                <h3>Medical Report</h3>
+                <div class="report-content">
+                    <div class="summary-section">
+                        <h4>Summary</h4>
+                        <p id="reportSummary"></p>
+                    </div>
+                    
+                    <div class="entities-section">
+                        <h4>Medical Entities</h4>
+                        <div id="medicalEntities"></div>
+                    </div>
+                    
+                    <div class="categories-section">
+                        <h4>Findings by Category</h4>
+                        <div id="findingsCategories"></div>
+                    </div>
+                    
+                    <div class="recommendations-section">
+                        <h4>Recommendations</h4>
+                        <ul id="recommendations"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
